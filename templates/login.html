@@ -2,20 +2,62 @@
 <html>
 <head>
     <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Login</h1>
+  <ul>
+    <li><a class="active" href="/home">Home</a></li>
+    <li><a href="/users">Users</a></li>
+    <li><a href="#contact">Contact</a></li>
+    
+    {% if session.email %}
+    <li style="float:right"><a href="/logout">logout</a></li>
+    {% else %}
+    <li style="float:right"><a href="/">Register</a></li>
+    <li style="float:right"><a href="/login">login</a></li>
+    {% endif %}
+  </ul>
+    
+    
+    <div class="registration">
+      <h1>Login</h1>
+<!-- <div class="container"> -->
+    <form method="post" action="{{ url_for('login') }}">
+      <div class="imgcontainer">
+        <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+        <img src="{{ url_for('static',filename='images/img_avatar2.png') }}" alt="Avatar" class="avatar">
+      </div>
     {% with messages = get_flashed_messages(with_categories=True) %}
-      {% if messages %}
-        <ul class="messages">
-          {% for category, message in messages %}
-            <li class="alert alert-{{ category }}">{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+    {% if messages %}
+    <ul class="messages">
+      {% for category, message in messages %}
+      <li class="alert alert-{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
     {% endwith %}
-
-    <form method="POST" action="{{ url_for('login') }}">
+      <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" id="email" name="email" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="email" name="password" required>
+    
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+    
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+    </div>
+    <!-- </div> -->
+    </div>
+    <!-- <form method="POST" action="{{ url_for('login') }}">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -25,6 +67,6 @@
             <input type="password" id="password" name="password" required>
         </div>
         <input type="submit" value="Login">
-    </form>
+    </form> -->
 </body>
 </html>

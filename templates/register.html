@@ -2,9 +2,25 @@
 <html>
 <head>
     <title>Registration Form</title>
-</head>
-<body>
-    <h1>Register</h1>
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    
+  </head>
+  <body>
+  
+    <ul>
+      <li><a class="active" href="/home">Home</a></li>
+      <li><a href="/users">Users</a></li>
+      <li><a href="#contact">Contact</a></li>
+      
+      {% if session.email %}
+        <li style="float:right"><a href="/logout">logout</a></li>
+      {% else %}
+        <li style="float:right"><a href="/">Register</a></li>
+        <li style="float:right"><a href="/login">login</a></li>
+      {% endif %}
+    </ul>
+    
     {% with messages = get_flashed_messages(with_categories=True) %}
       {% if messages %}
         <ul class="messages">
@@ -15,14 +31,44 @@
       {% endif %}
     {% endwith %}
 
-    {% if errors %}  <ul class="errors">
+    {% if errors %}  
+    <ul class="errors">
         {% for error in errors.values %}
             <li>{{ error }}</li>
         {% endfor %}
     </ul>
     {% endif %}
+    <div class="registration">
+      <h1>Register</h1>
+    <form method="post">
+      <div class="imgcontainer">
+        <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+        <img src="{{ url_for('static',filename='images/img_avatar2.png') }}" alt="Avatar" class="avatar">
+      </div>
+    
+      <div class="container">
+        <label for="name"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="name" name="name" required>
+    
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter email"  id="email" name="email" required>
+    
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter password" id="password" name="password" required>
 
-    <form method="POST">
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+    
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+    </div>
+    <!-- <form method="POST">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
@@ -32,6 +78,6 @@
             <input type="email" id="email" name="email">
         </div>
         <input type="submit" value="Register">
-    </form>
+    </form> -->
 </body>
 </html>
