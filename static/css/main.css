@@ -1,3 +1,11 @@
+body {
+    background-color: D3D9D4;
+}
+
+
+
+
+
 .homePage{
     background-color:pink;
 
@@ -153,6 +161,8 @@ nav .fa{
     margin: auto;
     text-align: center;
     padding-top: 10px;
+
+
 }
 h1{
     font-size: 30px;
@@ -172,7 +182,9 @@ p{
 }
 .course-col{
     flex-basis: 31%;
+    /* background: 212A31; */
     background: #c9f7f1;
+
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
@@ -221,8 +233,10 @@ h3{
     transition: 0.5s;
 }
 .layer:hover{
-    background: rgba(226, 0, 139, 0.605);
+    background: rgba(93, 213, 217, 0.476);
+    /* background: 2E3944(93, 213, 217, 0.476); */
 }
+
 .layer h3{
     font-weight: 500;
     color:black;

@@ -154,3 +154,12 @@ li a:hover:not(.active) {
     border-radius: 5px;
     cursor: pointer;
  }
+
+ /*------------------*/
+ .search_box input{
+    width: 100%;
+    border: 2px solid 748D92;
+    border-radius: 10px;
+    outline: none;
+    padding: 10 10px;
+}
