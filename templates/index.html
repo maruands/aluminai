@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landingpage</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+</head>
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <section class="header">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+        <!-- <img src="{{url_for('static', filename='impala_admin.jpeg')}}"> -->
+        <nav>
+            <!-- <a href="index.html"><img src="" alt=""></a> -->
+            
+            <div class="nav-links"  id="nav-links">
+                <i class="fa fa-window-close" style="color: aliceblue;" onclick=Hidemenu()></i>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">EVENTS</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">CONTACT</a></li>
+                    <li><a href="">SHOP</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick=showmenu()></i>
+        </nav>
+    <div class="text-box">
+        <h1>Welcome to the IMPALA Society</h1>
+        <p>A warm welcome message creates a comfortable atmosphere in any scenario, be it celebrating the return of a long-lost friend, welcoming a family member who hasn't been home for long, or ushering in new hires.</p>
+        <a href="" class="hero-btn">Reach out to Us</a>
+
+    </div>
+
+    </section>
+
+    <!----services we offer-->
+    <section class="course">
+        <h1>Latest News & Updates</h1>
+        <p>A good example of a paragraph contains a topic sentence, details and a conclusion. 'There are many different kinds of animals that live in China. Tigers and leopards are animals that live in China's forests in the north. In the jungles, monkeys swing in the trees and elephants walk through the brush.</p>
+       
+        <div class="row">
+            <div class="course-col">
+                <h3>Career Day</h3>
+                <img src="{{url_for('static', filename='images/vintage.jpeg')}}">
+                <p>In antiquity, a paragraph often was a single thought—and often a single sentence, usually a very long one. Writers today, however, tend not to go on the way classical authors did. In academic writing, most paragraphs include at least three sentences, though rarely more than ten.</p>
+
+            </div>
+            <div class="course-col">
+                <h3>Alumni Meetups</h3>
+                <img src="{{url_for('static', filename='images/music.jpeg')}}">
+                <p>In antiquity, a paragraph often was a single thought—and often a single sentence, usually a very long one. Writers today, however, tend not to go on the way classical authors did. In academic writing, most paragraphs include at least three sentences, though rarely more than ten.</p>
+
+            </div>
+            <div class="course-col">
+                <h3>Sports</h3>
+                <img src="{{url_for('static', filename='images/rugby.jpeg')}}">
+                <p>In antiquity, a paragraph often was a single thought—and often a single sentence, usually a very long one. Writers today, however, tend not to go on the way classical authors did. In academic writing, most paragraphs include at least three sentences, though rarely more than ten.</p>
+
+            </div>
+
+        </div>
+    </section>
+
+<!---------campus-->
+    <section class="campus">
+        <h1>Our Society</h1>
+        <p>What house were you in? Is it up-school from Baringo or Down-school to Elgon. Where do you memories lie??? </p>
+
+        <div class="row">
+            <div class="campus-col">
+                <img src="{{url_for('static', filename='images/bari.jpg')}}">   
+                <div class="layer">
+                    <h3>Baringo</h3>
+                </div> 
+            </div>
+            <div class="campus-col">
+                <img src="{{url_for('static', filename='images/athi.jpg')}}">   
+                <div class="layer">
+                    <h3>Athi</h3>
+                </div> 
+            </div>
+            <div class="campus-col">
+                <img src="{{url_for('static', filename='images/Tana.jpg')}}">  
+                <div class="layer">
+                    <h3>Tana</h3>
+                </div> 
+            </div>
+
+        </div>
+
+    </section>
+
+    <!----JavaScript for toggole menu--->
+    <script>
+        // var navLinks=document.getElementsByClassName("nav-links");
+        var navLinks = document.getElementById("nav-links")
+        function showmenu(){
+            navLinks.style.display = "block";
+
+        }
+        function Hidemenu(){
+            console.log('button has been clicked');
+            // navLinks.style.right = "-20%";
+            navLinks.style.display = "none"
+        }
+    </script>
+</body>
+</html>
