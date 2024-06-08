@@ -1,0 +1,81 @@
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+    text-align: center;
+    background-color: teal;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* background-image: url('Quad1968.jpg'); */
+    background-image: url('/static/images/Quad1968.jpg');
+
+  }
+  
+  .profile-container {
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: .9;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .info {
+    text-align: center;
+    text-decoration: solid;
+  }
+  
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .contact li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .edit-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid wheat;
+    border-radius: 4px;
+    background-color: burlywood;
+    text-decoration: none;
+    color: black;
+    margin-top: 1rem;
+  }
+
+  .edit-button:hover {  
+    background-color: rosybrown;
+  }
+  

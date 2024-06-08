@@ -105,6 +105,14 @@ def logout():
 def dashboard():
     return render_template('index.html')
 
+@app.route("/news")
+def news():
+    return render_template('news.html')
+
+@app.route("/prof")
+def prof():
+    return render_template('prof.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
     # app.run(host='0.0.0.0',port=5555)6

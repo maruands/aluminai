@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/prof.css') }}">
+</head>
+<body>
+  <div class="profile-container">
+    <!-- <img src="roro.jpeg" alt="Profile Picture" class="profile-picture"> -->
+    <img src="{{url_for('static', filename='images/roro.jpeg')}}" class="profile-picture">
+    <div class="info">
+      <h1>John Doe</h1>
+      <h3>Class of 76   Baringo   4K</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod odio ac diam volutpat consectetur. Maecenas eu augue eget magna gravida dignissim. Sed auctor odio non nibh pulvinar, at tempus leo elementum. Pellentesque eget orci et leo pulvinar rutrum.</p>
+      <ul class="contact">
+        <li><a href="mailto:johndoe@example.com">johndoe@example.com</a></li>
+        <li><a href="https://www.facebook.com/johndoe">Facebook</a></li>
+      </ul>
+      <a href="edit-profile.html" class="edit-button">Edit Profile</a>
+    </div>
+  </div>
+</body>
+</html>
