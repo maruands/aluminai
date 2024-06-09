@@ -9,12 +9,12 @@
   <body>
   
     <ul>
-      <li><a href="/home">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="/users">Users</a></li>
       <li><a href="#contact">Contact</a></li>
       
       {% if session.email %}
-        <li style="float:right"><a href="/logout">logout</a></li>
+        <li style="float:right"><a href="/">logout</a></li>
       {% else %}
         
         <li style="float:right"><a href="/login">login</a></li>

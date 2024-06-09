@@ -9,20 +9,17 @@
 
 <body>
     <ul>
-        <li><a class="active" href="/home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/users">Users</a></li>
-        <li><a href="#contact">Profile</a></li>
+        <li><a href="/prof">Profile</a></li>
         {% if session.email %}
-        <li style="float:right"><a href="/logout">logout</a></li>
+        <li style="float:right"><a href="/">logout</a></li>
         {% else %}
         <li style="float:right"><a href="/">Register</a></li>
         <li style="float:right"><a href="/login">login</a></li>
         {% endif %}
     </ul>
-    <div class="search_box">
-        <input type="text" required>
-        <label for="">Search</label>
-    </div>
+    
 
 </body>
 </html>

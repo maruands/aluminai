@@ -21,16 +21,16 @@
             <!-- <div class="nav-links"> -->
                 <!-- <i class="fa fa-window-close" style="color: aliceblue;" onclick=Hidemenu()></i> -->
                 <ul>
-                    <li><a href="dashboard">HOME</a></li>
+                    <li><a href="/">HOME</a></li>
                     <li><a href="/users">My ALUMNI</a></li>
                     <li><a href="/news">EVENTS</a></li>
                     <li ><a href="/prof">ABOUT</a></li>
                     
 
                     {% if session.email %}
-                    <li style="float:right"><a href="/prof">PROFILE</a></li>
+                    <li style="float:right"><a href="/">LOGOUT</a></li>
                     {% else %}
-                    <li style="float:right"><a href="/login">Log-in / Sign-Up</a></li>
+                    <li style="float:right"><a href="/login">Log-In / Sign-Up</a></li>
                     {% endif %}
 
                 </ul>

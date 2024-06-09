@@ -16,7 +16,7 @@ ul {
 
 li {
     float: left;
-    border-right: 1px solid black;
+    border-right: 1px solid #bbb;
 }
 
 li:last-child {
@@ -25,14 +25,14 @@ li:last-child {
 
 li a {
     display: block;
-    color: black;
+    color: wheat;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
-    background-color: #f2f2f2;
+li a:hover {
+    background-color: #333;
 }
 
 .registration{
@@ -169,3 +169,7 @@ li a:hover:not(.active) {
     outline: none;
     padding: 10 10px;
 }
+h1 {
+    margin-bottom: 1rem;
+    color: wheat;  /* Added text color */
+  }

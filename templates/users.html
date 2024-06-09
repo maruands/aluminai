@@ -12,15 +12,15 @@
         <li><a href="/users">Users</a></li>
         <li><a href="prof">Profile</a></li> -->
 <!-- ----------------------  -->
-        <li><a href="/dashboard">HOME</a></li>
+        <li><a href="/">HOME</a></li>
         <li><a href="/users">DIRECTORY</a></li>
         <li><a href="/news">EVENTS</a></li>
-        <li><a href="/prof">PROFILE</a></li>
+        <li><a href="/prof<id=user[1]>">PROFILE</a></li>
 <!-- ----------------------  -->
         {% if session.email %}
-        <li style="float:right"><a href="/logout">LOGOUT</a></li>
+        <li style="float:right"><a href="/">LOGOUT</a></li>
         {% else %}
-        <li style="float:right"><a href="/">Register</a></li>
+        <li style="float:right"><a href="/register">Register</a></li>
         <li style="float:right"><a href="/login">login</a></li>
         {% endif %}
     </ul>

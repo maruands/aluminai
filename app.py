@@ -13,7 +13,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         # return print("getting here")
@@ -101,7 +101,7 @@ def logout():
     session["email"] = None
     return redirect("/login")
 
-@app.route("/dashboard")
+@app.route("/")
 def dashboard():
     return render_template('index.html')
 
