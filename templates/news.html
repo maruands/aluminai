@@ -9,6 +9,25 @@
   
 </head>
 <body>
+
+  <ul>
+    <!-- <li><a class="active" href="/dashboard">Home</a></li>
+    <li><a href="/users">Users</a></li>
+    <li><a href="prof">Profile</a></li> -->
+<!-- ----------------------  -->
+    <li><a href="/dashboard">HOME</a></li>
+    <li><a href="/users">DIRECTORY</a></li>
+    <li><a href="/news">EVENTS</a></li>
+    <li><a href="/prof">PROFILE</a></li>
+<!-- ----------------------  -->
+    {% if session.email %}
+    <li style="float:right"><a href="/logout">LOGOUT</a></li>
+    {% else %}
+    <li style="float:right"><a href="/login">Log-in / Sign-Up</a></li>
+    {% endif %}
+  </ul>
+<!--    -----------------   -->
+    
   <h1>News & Events</h1>
   <section class="news-container">
     <article class="news-item">

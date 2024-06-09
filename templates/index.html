@@ -15,23 +15,30 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
         <!-- <img src="{{url_for('static', filename='impala_admin.jpeg')}}"> -->
-        <nav>
+        <!-- <nav> -->
             <!-- <a href="index.html"><img src="" alt=""></a> -->
             
-            <div class="nav-links"  id="nav-links">
-                <i class="fa fa-window-close" style="color: aliceblue;" onclick=Hidemenu()></i>
+            <!-- <div class="nav-links"> -->
+                <!-- <i class="fa fa-window-close" style="color: aliceblue;" onclick=Hidemenu()></i> -->
                 <ul>
                     <li><a href="dashboard">HOME</a></li>
                     <li><a href="/users">My ALUMNI</a></li>
                     <li><a href="/news">EVENTS</a></li>
-                    <li><a href="/prof">ABOUT</a></li>
-                    <li><a href="">Log-in / Sign-Up</a></li>
+                    <li ><a href="/prof">ABOUT</a></li>
+                    
+
+                    {% if session.email %}
+                    <li style="float:right"><a href="/prof">PROFILE</a></li>
+                    {% else %}
+                    <li style="float:right"><a href="/login">Log-in / Sign-Up</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick=showmenu()></i>
-        </nav>
+            
+        <!-- </nav>  -->
     <div class="text-box">
-        <h1>Welcome to the IMPALA Society</h1>
+        <h1>IMPALA SOCIETY</h1>
         <p>A warm welcome message creates a comfortable atmosphere in any scenario, be it celebrating the return of a long-lost friend, welcoming a family member who hasn't been home for long, or ushering in new hires.</p>
         <a href="" class="hero-btn">Reach out to Us</a>
 

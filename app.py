@@ -109,9 +109,17 @@ def dashboard():
 def news():
     return render_template('news.html')
 
-@app.route("/prof")
-def prof():
+@app.route("/prof<id>")
+def prof(id):
     return render_template('prof.html')
+
+@app.route("/edit_profile")
+def edit_profile():
+    return render_template('edit_profile.html')
+
+@app.route("/search_user")
+def search_user():
+    return render_template('search_user.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

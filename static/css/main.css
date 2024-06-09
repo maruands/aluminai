@@ -10,7 +10,7 @@ body {
     background-color:pink;
 
 }
-.Nav{
+/* .Nav{
     display: inline;
     
 }
@@ -27,6 +27,7 @@ body {
     text-decoration: underline;
     text-decoration-color: aqua;
 }
+*/
 
 .profile i{
     position: absolute;
@@ -53,9 +54,8 @@ body {
 .header{
     min-height: 100vh;
     width: 100%;
-    background-color: aqua;
     background-image: url('/static/images/School.jpg');
-    background-image: linear-gradient(rgba(4,9,30,0,7),rgba(4, 9, 30, 0.352))url('/static/vintage.jpeg');
+    
     background-position: center;
     background-size: cover;
     position: relative;
@@ -67,6 +67,38 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
+/* ----- */
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        /* background-color: #333; */
+    }
+    
+    li {
+        float: left;
+        border-right: 1px solid #bbb;
+    }
+    
+    li:last-child {
+        border-right: none;
+    }
+    
+    li a {
+        display: block;
+        color: #333;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover {
+        background-color: wheat;
+    }
+
+/* ----- */
+
 .nav-links{
     flex: 1;
     text-align: right;
@@ -76,17 +108,28 @@ nav{
     display: inline-block;
     padding: 8px 12px;
     position: relative;
+    display: inline-block;
+    border-right: 1px solid #333;
     
 }
+/*-------*/
+.nav-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+/*------*/
 .nav-links ul li a{
-    color: #000;
+    color: #333;
     text-decoration: none;
     font-size: 15px;
 }
 
 .nav-links ul li :hover{
     width: 100%;
-    color: #d23a3a;
+    color: wheat;
+    background-color: #333;
     transition: 0.5s;
     text-decoration: underline;
 }
@@ -171,7 +214,8 @@ h1{
 p{
     font-size: 20px;
     font-weight: 300;
-    color: #282727;
+    /* color: #282727; */
+    color: #333;
     line-height: 24px;
     padding: 10px;
 }

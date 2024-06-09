@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+  <!-- <h1>Edit Profile</h1>
+  <form action="#">  <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="John Doe">
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" value="Software Engineer">
+    </div>
+    <div class="form-group">
+      <label for="bio">Bio:</label>
+      <textarea id="bio" name="bio">Lorem ipsum dolor sit amet...</textarea>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="johndoe@example.com">
+    </div>
+    <div class="form-group">
+      <label for="facebook">Facebook URL:</label>
+      <input type="url" id="facebook" name="facebook" value="https://www.facebook.com/johndoe">
+    </div>
+    <button type="submit">Save Changes</button>
+  </form> -->
+<!--  --------------------------------      -->
+
+<ul>
+  <li><a class="active" href="/home">Home</a></li>
+  <li><a href="/users">Users</a></li>
+  <li><a href="#contact">Contact</a></li>
+  
+  {% if session.email %}
+    <li style="float:right"><a href="/logout">logout</a></li>
+  {% else %}
+    <li style="float:right"><a href="/">Register</a></li>
+    <li style="float:right"><a href="/login">login</a></li>
+  {% endif %}
+</ul>
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    <ul class="messages">
+      {% for category, message in messages %}
+        <li class="alert alert-{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% if errors %}  
+<ul class="errors">
+    {% for error in errors.values %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="registration">
+  <h1>Edit Profile</h1>
+<form method="post">
+  <div class="imgcontainer">
+    <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+    <img src="{{ url_for('static',filename='images/img_avatar2.png') }}" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="name" id="name" name="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter email"  id="email" name="email" required>
+
+    <label for="year"><b>Year</b></label>
+    <input type="year" placeholder="Year you graduated" id="year" name="year" required>
+
+    <label for="house"><b>House</b></label>
+    <input type="text" placeholder="House" id="house" name="house" required>
+
+    <label for="bio"><b>Bio</b></label>
+    <input type="text" placeholder="Something small about yourself" id="bio" name="bio" required>
+
+    <button type="submit">Save Changes</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+  </div>
+</form>
+</div>
+
+</body>
+</html>
