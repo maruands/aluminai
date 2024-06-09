@@ -117,10 +117,19 @@ def prof(id):
 def edit_profile():
     return render_template('edit_profile.html')
 
-@app.route("/search_user")
+@app.route("/search_user", methods=[ 'POST'])
 def search_user():
-    return render_template('search_user.html')
+    if request.method == 'POST':
+        name = request.form['name']
+        
+        # Connect to database
+        conn = connect_db()
+        cursor = conn.cursor()
+        user = conn.execute("SELECT * FROM users WHERE name = ?", (name,)).fetchall()
+        conn.close()
 
+        return render_template('search_user.html', user=user)    
+    
 if __name__ == '__main__':
     app.run(debug=True)
     # app.run(host='0.0.0.0',port=5555)6

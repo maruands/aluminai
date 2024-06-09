@@ -7,6 +7,7 @@ def connect_db():
     conn.execute('CREATE TABLE IF NOT EXISTS users (name TEXT, email TEXT, password TEXT)')
     conn.execute('CREATE TABLE IF NOT EXISTS logins (username TEXT PRIMARY KEY, password TEXT)')
     return conn
+
 def login_user(conn, email):
     conn.execute('SELECT * FROM users where email=?', (email,))
 

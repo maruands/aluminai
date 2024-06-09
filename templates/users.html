@@ -28,8 +28,11 @@
     <h1>Registered Users</h1>
 
     <div class="search_box">
-        <input type="text" name="search_name">
-        <label for="">Search</label>
+        <form method="post" action="{{ url_for('search_user') }}">
+            <label for="">Search</label>
+            <input type="text" name="name" id="name" >
+            <button type="submit">Search</button>
+        </form>
     </div>
     
     <table id="customers">
