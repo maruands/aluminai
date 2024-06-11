@@ -12,6 +12,9 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -57,7 +60,7 @@ def show_users():
         conn = connect_db()
         users = conn.execute('SELECT * FROM users').fetchall()
         conn.close()
-
+        # return f'{users}'
         return render_template('users.html', users=users)
 
     return render_template('login.html')
@@ -99,7 +102,7 @@ def view_profile(id):
 @app.route("/logout")
 def logout():
     session["email"] = None
-    return redirect("/login")
+    return redirect("/")
 
 @app.route("/")
 def dashboard():
@@ -125,10 +128,10 @@ def search_user():
         # Connect to database
         conn = connect_db()
         cursor = conn.cursor()
-        user = conn.execute("SELECT * FROM users WHERE name = ?", (name,)).fetchall()
+        users = conn.execute("SELECT * FROM users WHERE name = ?", (name,)).fetchall()
         conn.close()
-
-        return render_template('search_user.html', user=user)    
+        # return f'{users}'
+        return render_template('users.html', users=users)    
     
 if __name__ == '__main__':
     app.run(debug=True)
