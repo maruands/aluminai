@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
-from db import connect_db, insert_user, login_user
+from db import connect_db, insert_user, login_user, inser_profile
 # from flask_bcrypt import Bcrypt
 import bcrypt
 import sys
@@ -20,13 +20,14 @@ def page_not_found(error):
 def register():
     if request.method == 'POST':
         # return print("getting here")
-        name = request.form['name']
+        firstname = request.form['firstname']
+        surname = request.form['surname']
         email = request.form['email']
         password = request.form['password']
 
         # Server-side validation (optional, improve based on your needs)
         errors = {}
-        if not name:
+        if not firstname:
             errors['name_error'] = "Name is required."
         if not email or '@' not in email:
             errors['email_error'] = "Invalid email address."
@@ -43,7 +44,7 @@ def register():
 
         hashed = bcrypt.hashpw(password.encode('utf-8'), bytes(bcrypt.gensalt()))
         conn = connect_db()
-        insert_user(conn, name, email, hashed)
+        insert_user(conn, firstname, surname, email, hashed)
         conn.close()
 
         flash('Registration successful!', 'success')
@@ -79,11 +80,12 @@ def login():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
         login_data = cursor.fetchone()
+        print(login_data)
         conn.close()
 
         if login_data:  # Check if user exists
             
-            if bcrypt.checkpw(password, login_data[2]):
+            if bcrypt.checkpw(password, login_data[4]):
                 session["email"] = request.form['email']
                 # flash('Login successful!', 'success')
                 return redirect(url_for('show_users'))  # Redirect after successful login
@@ -99,10 +101,6 @@ def view_profile(id):
     
     return render_template('view_profile.html')
 
-@app.route("/logout")
-def logout():
-    session["email"] = None
-    return redirect("/")
 
 @app.route("/")
 def dashboard():
@@ -114,11 +112,38 @@ def news():
 
 @app.route("/prof<id>")
 def prof(id):
-    return render_template('prof.html')
+    # Connect to database
+    conn = connect_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
+    user = cursor.fetchone()
 
-@app.route("/edit_profile")
-def edit_profile():
-    return render_template('edit_profile.html')
+    cursor.execute("select * FROM profiles where user_id = ?", (id,))
+    profile = cursor.fetchone()
+    
+    conn.close()
+    return render_template('prof.html', user=user, profile=profile)
+
+@app.route("/edit_profile<id>")
+def edit_profile(id):
+    print(id)
+    return render_template('edit_profile.html', id=id)
+
+@app.route("/profile", methods=['POST'])
+def profile():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        education = request.form['education']
+        location = request.form['location']
+        year = request.form['year']
+        bio = request.form['bio']
+        house = request.form['house']
+
+        conn = connect_db()
+        inser_profile(conn,user_id,education,location,year,bio,house)
+        conn.close()
+        flash('Registration successful!', 'success')
+        return redirect(url_for('edit_profile', id=user_id))
 
 @app.route("/search_user", methods=[ 'POST'])
 def search_user():
@@ -128,11 +153,16 @@ def search_user():
         # Connect to database
         conn = connect_db()
         cursor = conn.cursor()
-        users = conn.execute("SELECT * FROM users WHERE name = ?", (name,)).fetchall()
+        users = conn.execute("SELECT * FROM users WHERE firstname = ?", (name,)).fetchall()
         conn.close()
         # return f'{users}'
         return render_template('users.html', users=users)    
     
+@app.route("/logout")
+def logout():
+    session["email"] = None
+    return redirect("/")
+
 if __name__ == '__main__':
     app.run(debug=True)
     # app.run(host='0.0.0.0',port=5555)6

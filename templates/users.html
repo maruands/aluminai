@@ -38,8 +38,9 @@
     <table id="customers">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Surname</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -48,7 +49,8 @@
             <tr>
                 <td>{{ user[0] }}</td>
                 <td>{{ user[1] }}</td>
-                <td><a href="{{ url_for('prof', id=user[1]) }}" class="view_profile">view profile</a></td>
+                <td>{{ user[2] }}</td>
+                <td><a href="{{ url_for('prof', id=user[0]) }}" class="view_profile">view profile</a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -64,21 +64,22 @@
 {% endif %}
 <div class="registration">
   <h1>Edit Profile</h1>
-<form method="post">
+<form method="post" action="{{ url_for('profile') }}">
   <div class="imgcontainer">
     <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
     <img src="{{ url_for('static',filename='images/img_avatar2.png') }}" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="name" id="name" name="name" required>
+    <input type="hidden" name="id" value="{{id}}">
+    <label for="name"><b>Education</b></label>
+    <input type="text" placeholder="name" id="name" name="education" required>
 
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter email"  id="email" name="email" required>
+    <label for="email"><b>Location</b></label>
+    <input type="text" placeholder="Enter email"  id="location" name="location" required>
 
     <label for="year"><b>Year</b></label>
-    <input type="year" placeholder="Year you graduated" id="year" name="year" required>
+    <input type="number" placeholder="Year you graduated" id="year" name="year" required>
 
     <label for="house"><b>House</b></label>
     <input type="text" placeholder="House" id="house" name="house" required>
