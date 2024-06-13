@@ -1,4 +1,4 @@
-#IMPALA SOCIETY#
+# IMPALA SOCIETY
 
 #Description#
 
