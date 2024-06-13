@@ -165,7 +165,9 @@ def search_user():
     
 @app.route("/logout")
 def logout():
-    session["email"] = None
+    # session["email"] = None
+    print(session["email"])
+    session.clear()
     return redirect("/")
 
 if __name__ == '__main__':
