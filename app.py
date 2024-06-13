@@ -119,19 +119,16 @@ def prof(email):
         conn = connect_db()
         cursor = conn.cursor()
         user = conn.execute("SELECT users.firstname, users.surname, users.email, profiles.education, profiles.location, profiles.bio, profiles.year FROM users INNER JOIN profiles ON users.id=profiles.user_id WHERE users.email = ?", (email,)).fetchone()
-        # cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
-        # user = cursor.fetchone()
-
-        # cursor.execute("select * FROM profiles where user_id = ?", (id,))
-        # profile = cursor.fetchone()
-        
+        if not user:
+            user=conn.execute("SELECT users.firstname, users.surname, users.email FROM users WHERE users.email = ?", (email,)).fetchone()
         conn.close()
         return render_template('prof.html', user=user)
     return render_template('login.html')
-@app.route("/edit_profile<id>")
-def edit_profile(id):
-    print(id)
-    return render_template('edit_profile.html', id=id)
+
+@app.route("/edit_profile<email>")
+def edit_profile(email):
+    print(email)
+    return render_template('edit_profile.html', id=email)
 
 @app.route("/profile", methods=['POST'])
 def profile():
@@ -142,20 +139,21 @@ def profile():
         year = request.form['year']
         bio = request.form['bio']
         house = request.form['house']
-
+        print(user_id,education,location,bio,year,house)
         conn = connect_db()
-        inser_profile(conn,user_id,education,location,year,bio,house)
+        inser_profile(conn,user_id,education,location,bio,year,house)
         conn.close()
         flash('Registration successful!', 'success')
         return redirect(url_for('edit_profile', id=user_id))
 
 @app.route("/myprofile/<email>")
 def myprofile(email):
+    print(email)
     conn = connect_db()
     cursor = conn.cursor()
     user = conn.execute("SELECT users.firstname, users.surname, users.email, profiles.education, profiles.location, profiles.bio, profiles.year FROM users INNER JOIN profiles ON users.id=profiles.user_id WHERE users.email = ?", (email,)).fetchone()
     conn.close()
-
+    print(user)
     return render_template("prof.html", user=user)
 
 @app.route("/search_user", methods=[ 'POST'])

@@ -11,7 +11,7 @@
         <li><a href="mailto:johndoe@example.com">{{user[4]}}</a></li>
         <li><a href="https://www.facebook.com/johndoe">{{user[5]}}</a></li>
       </ul>
-      <a href="{{ url_for('edit_profile', id=user[0]) }}" class="edit-button">Edit Profile</a>
+      <a href="{{ url_for('edit_profile', email=user[0]) }}" class="edit-button">Edit Profile</a>
     </div>
   </div>
 {% endblock %}

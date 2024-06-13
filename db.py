@@ -15,8 +15,8 @@ def insert_user(conn, firstname, surname, email, password):
     conn.execute('INSERT INTO users (firstname, surname, email, password) VALUES (?, ?, ?, ?)', (firstname, surname, email, password))
     conn.commit()
 
-def inser_profile(conn,user_id,education,location,year,bio,house):
-    conn.execute('INSERT INTO profiles (user_id, education, location, bio, year, house) VALUES (?, ?, ?, ?, ?, ?)', (user_id,education,location,year,bio,house))
+def inser_profile(conn,user_id,education,location,bio,year,house):
+    conn.execute('INSERT INTO profiles (user_id, education, location, bio, year, house) VALUES (?, ?, ?, ?, ?, ?)', (user_id,education,location,bio,year,house))
     conn.commit()
 
 def insert_login(conn, username, hashed_password):
