@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registration Form</title>
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
-    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
-    
-  </head>
-  <body>
-  
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/users">Users</a></li>
-      <li><a href="#contact">Contact</a></li>
-      
-      {% if session.email %}
-        <li style="float:right"><a href="/">logout</a></li>
-      {% else %}
-        
-        <li style="float:right"><a href="/login">login</a></li>
-      {% endif %}
-    </ul>
+{% extends "layout.html" %}
+
+{% block y %}
     
     {% with messages = get_flashed_messages(with_categories=True) %}
       {% if messages %}
@@ -71,16 +52,4 @@
       </div>
     </form>
     </div>
-    <!-- <form method="POST">
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-        </div>
-        <input type="submit" value="Register">
-    </form> -->
-</body>
-</html>
+{% endblock %}

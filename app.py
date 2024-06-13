@@ -98,32 +98,37 @@ def login():
 
 @app.route("/view_profile/<id>")
 def view_profile(id):
+    if session.get("email"):
+        return render_template('view_profile.html')
     
-    return render_template('view_profile.html')
-
+    return render_template('login.html')
 
 @app.route("/")
 def dashboard():
-    return render_template('index.html')
+    if session.get("email"):
+        return render_template('index.html')
+    return render_template('login.html')
 
 @app.route("/news")
 def news():
-    return render_template('news.html')
-
+    if session.get("email"):
+        return render_template('news.html')
+    return render_template('login.html')
 @app.route("/prof<id>")
 def prof(id):
     # Connect to database
-    conn = connect_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
-    user = cursor.fetchone()
+    if session.get("email"):
+        conn = connect_db()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
+        user = cursor.fetchone()
 
-    cursor.execute("select * FROM profiles where user_id = ?", (id,))
-    profile = cursor.fetchone()
-    
-    conn.close()
-    return render_template('prof.html', user=user, profile=profile)
-
+        cursor.execute("select * FROM profiles where user_id = ?", (id,))
+        profile = cursor.fetchone()
+        
+        conn.close()
+        return render_template('prof.html', user=user, profile=profile)
+    return render_template('login.html')
 @app.route("/edit_profile<id>")
 def edit_profile(id):
     print(id)

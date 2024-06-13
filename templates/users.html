@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registered Users</title>
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
-</head>
-<body>
-    
-    <ul>
-        <!-- <li><a class="active" href="/dashboard">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="prof">Profile</a></li> -->
-<!-- ----------------------  -->
-        <li><a href="/">HOME</a></li>
-        <li><a href="/users">DIRECTORY</a></li>
-        <li><a href="/news">EVENTS</a></li>
-        <li><a href="/prof<id=user[1]>">PROFILE</a></li>
-<!-- ----------------------  -->
-        {% if session.email %}
-        <li style="float:right"><a href="/">LOGOUT</a></li>
-        {% else %}
-        <li style="float:right"><a href="/register">Register</a></li>
-        <li style="float:right"><a href="/login">login</a></li>
-        {% endif %}
-    </ul>
+{% extends "layout.html" %}
+
+{% block y %}
 
     <h1>Registered Users</h1>
 
@@ -55,5 +32,4 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}
