@@ -10,7 +10,7 @@
         integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
-    
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/news.css') }}">
 </head>
 
 <body>
@@ -29,7 +29,8 @@
             </div>
         </a></li>
         {% else %}
-        <li style="float:right"><a href="/login">Log-In / Sign-Up</a></li>
+        <li style="float:right"><a href="/login">LogIn </a></li>
+        <li style="float:right"><a href="/register">SignUp</a></li>
         {% endif %}
     
     </ul>

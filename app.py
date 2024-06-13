@@ -66,14 +66,9 @@ def register():
         if errors:
             return render_template('register.html', errors=errors)  # Pass errors to template
 
-        # encrypt data
-        # pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
-        # pw_hash = bcrypt.generate_password_hash(‘hunter2’).decode(‘utf-8’)
-        # Insert user data if validation passes
-
         hashed = bcrypt.hashpw(password.encode('utf-8'), bytes(bcrypt.gensalt()))
         conn = connect_db()
-        insert_user(conn, firstname, surname, email, hashed)
+        insert_user(conn, firstname.upper(), surname.upper(), email, hashed)
         conn.close()
 
         flash('Registration successful!', 'success')
@@ -116,6 +111,7 @@ def news():
     if session.get("email"):
         return render_template('news.html')
     return render_template('login.html')
+    
 @app.route("/prof/<email>")
 def prof(email):
     # Connect to database
@@ -170,10 +166,12 @@ def search_user():
         # Connect to database
         conn = connect_db()
         cursor = conn.cursor()
-        users = conn.execute("SELECT * FROM users WHERE firstname = ?", (name,)).fetchall()
+        users = conn.execute("SELECT * FROM users WHERE firstname = ?", (name.upper(),)).fetchall()
+        if not users:
+            users = conn.execute("SELECT * FROM users WHERE surname = ?", (name.upper(),)).fetchall()
         conn.close()
         # return f'{users}'
-        return render_template('users.html', users=users)    
+        return render_template('alumni.html', users=users)    
     
 @app.route("/logout")
 def logout():
