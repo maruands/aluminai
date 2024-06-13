@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block y %}
+{% block allcontent %}
 
     <h1>Registered Users</h1>
 
@@ -27,7 +27,7 @@
                 <td>{{ user[0] }}</td>
                 <td>{{ user[1] }}</td>
                 <td>{{ user[2] }}</td>
-                <td><a href="{{ url_for('prof', id=user[0]) }}" class="view_profile">view profile</a></td>
+                <td><a href="{{ url_for('prof', email=user[3]) }}" class="view_profile">view profile</a></td>
             </tr>
             {% endfor %}
         </tbody>

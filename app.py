@@ -12,9 +12,38 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template('index.html')
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    elif request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password'].encode('utf-8')  # Encode password for hashing
+        
+        # Connect to database
+        conn = connect_db()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
+        login_data = cursor.fetchone()
+        print(login_data)
+        conn.close()
+
+        if login_data:  # Check if user exists
+            
+            if bcrypt.checkpw(password, login_data[4]):
+                session["email"] = request.form['email']
+                # flash('Login successful!', 'success')
+                return redirect(url_for('home'))  # Redirect after successful login
+            else:
+                flash('Invalid password.', 'error')
+        else:
+            flash('Invalid username or password.', 'error')
+
+        return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -53,7 +82,7 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/users')
+@app.route('/alumni')
 def show_users():
     # Connect to database and fetch all users
     if session.get("email"):
@@ -62,39 +91,12 @@ def show_users():
         users = conn.execute('SELECT * FROM users').fetchall()
         conn.close()
         # return f'{users}'
-        return render_template('users.html', users=users)
+        return render_template('alumni.html', users=users)
 
     return render_template('login.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'GET':
-        return render_template('login.html')
-    elif request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password'].encode('utf-8')  # Encode password for hashing
-        
-        # Connect to database
-        conn = connect_db()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
-        login_data = cursor.fetchone()
-        print(login_data)
-        conn.close()
 
-        if login_data:  # Check if user exists
-            
-            if bcrypt.checkpw(password, login_data[4]):
-                session["email"] = request.form['email']
-                # flash('Login successful!', 'success')
-                return redirect(url_for('show_users'))  # Redirect after successful login
-            else:
-                flash('Invalid password.', 'error')
-        else:
-            flash('Invalid username or password.', 'error')
-
-        return render_template('login.html')
 
 @app.route("/view_profile/<id>")
 def view_profile(id):
@@ -103,7 +105,7 @@ def view_profile(id):
     
     return render_template('login.html')
 
-@app.route("/")
+@app.route("/dashbord")
 def dashboard():
     if session.get("email"):
         return render_template('index.html')
@@ -114,20 +116,21 @@ def news():
     if session.get("email"):
         return render_template('news.html')
     return render_template('login.html')
-@app.route("/prof<id>")
-def prof(id):
+@app.route("/prof/<email>")
+def prof(email):
     # Connect to database
     if session.get("email"):
         conn = connect_db()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
-        user = cursor.fetchone()
+        user = conn.execute("SELECT users.firstname, users.surname, users.email, profiles.education, profiles.location, profiles.bio, profiles.year FROM users INNER JOIN profiles ON users.id=profiles.user_id WHERE users.email = ?", (email,)).fetchone()
+        # cursor.execute("SELECT * FROM users WHERE id = ?", (id,))
+        # user = cursor.fetchone()
 
-        cursor.execute("select * FROM profiles where user_id = ?", (id,))
-        profile = cursor.fetchone()
+        # cursor.execute("select * FROM profiles where user_id = ?", (id,))
+        # profile = cursor.fetchone()
         
         conn.close()
-        return render_template('prof.html', user=user, profile=profile)
+        return render_template('prof.html', user=user)
     return render_template('login.html')
 @app.route("/edit_profile<id>")
 def edit_profile(id):
@@ -150,6 +153,15 @@ def profile():
         flash('Registration successful!', 'success')
         return redirect(url_for('edit_profile', id=user_id))
 
+@app.route("/myprofile/<email>")
+def myprofile(email):
+    conn = connect_db()
+    cursor = conn.cursor()
+    user = conn.execute("SELECT users.firstname, users.surname, users.email, profiles.education, profiles.location, profiles.bio, profiles.year FROM users INNER JOIN profiles ON users.id=profiles.user_id WHERE users.email = ?", (email,)).fetchone()
+    conn.close()
+
+    return render_template("prof.html", user=user)
+
 @app.route("/search_user", methods=[ 'POST'])
 def search_user():
     if request.method == 'POST':
@@ -169,6 +181,10 @@ def logout():
     print(session["email"])
     session.clear()
     return redirect("/")
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

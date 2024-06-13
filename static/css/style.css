@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/images/bg2.jpg');
+    /* background-image: url('/static/images/bg2.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -27,14 +27,14 @@ li:last-child {
 
 li a {
     display: block;
-    color: wheat;
+    /* color: wheat; */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover {
-    background-color: #333;
+    background-color: #ad9a9a;
 }
 
 .registration{
@@ -173,5 +173,5 @@ li a:hover {
 }
 h1 {
     margin-bottom: 1rem;
-    color: wheat;  /* Added text color */
+    /* color: wheat;  Added text color */
   }

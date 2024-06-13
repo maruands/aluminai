@@ -1,26 +1,44 @@
-
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landingpage</title>
+    
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+        integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    
 </head>
 
 <body>
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
-        <li><a href="#contact">Contact</a></li>
-
+        <li><a href="/">HOME</a></li>
+        <li><a href="/alumni">ALUMNI</a></li>
+        <li><a href="/news">EVENTS</a></li>
+        <li><a href="/prof">ABOUT</a></li>
+    
+    
         {% if session.email %}
-        <li style="float:right"><a href="/logout">logout</a></li>
+        <li style="float:right" class="dropdown"><a href="#"><i class='fas fa-user-alt'></i>Profile
+            <div class="dropdown-content">
+                <a href="{{ url_for('myprofile', email=session.email) }}">Profile</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </a></li>
         {% else %}
-        <li style="float:right"><a href="/register">Register</a></li>
-        <!-- <li style="float:right"><a href="/login">login</a></li> -->
+        <li style="float:right"><a href="/login">Log-In / Sign-Up</a></li>
         {% endif %}
+    
     </ul>
-    {% block y %}{% endblock %}
+    
+        {%block welcome %} {% endblock %}
+    
+
+        {% block allcontent %}
+        {% endblock %}
 
 </body>
 

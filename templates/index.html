@@ -1,50 +1,17 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landingpage</title>
-    <!-- <link rel="stylesheet" href="main.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-</head>
-    <!-- <link rel="stylesheet" href="main.css"> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+
+    {%block welcome %}
     <section class="header">
+        <div class="text-box">
+            <h1>IMPALA SOCIETY</h1>
+            <p>A warm welcome message creates a comfortable atmosphere in any scenario, be it celebrating the return of a long-lost friend, welcoming a family member who hasn't been home for long, or ushering in new hires.</p>
+            <a href="" class="hero-btn">Reach out to Us</a>
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-
-        <!-- <img src="{{url_for('static', filename='impala_admin.jpeg')}}"> -->
-        <!-- <nav> -->
-            <!-- <a href="index.html"><img src="" alt=""></a> -->
-            
-            <!-- <div class="nav-links"> -->
-                <!-- <i class="fa fa-window-close" style="color: aliceblue;" onclick=Hidemenu()></i> -->
-                <ul>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/users">My ALUMNI</a></li>
-                    <li><a href="/news">EVENTS</a></li>
-                    <li ><a href="/prof">ABOUT</a></li>
-                    
-
-                    {% if session.email %}
-                    <li style="float:right"><a href="/">LOGOUT</a></li>
-                    {% else %}
-                    <li style="float:right"><a href="/login">Log-In / Sign-Up</a></li>
-                    {% endif %}
-
-                </ul>
-            </div>
-            
-        <!-- </nav>  -->
-    <div class="text-box">
-        <h1>IMPALA SOCIETY</h1>
-        <p>A warm welcome message creates a comfortable atmosphere in any scenario, be it celebrating the return of a long-lost friend, welcoming a family member who hasn't been home for long, or ushering in new hires.</p>
-        <a href="" class="hero-btn">Reach out to Us</a>
-
-    </div>
-
+        </div>
     </section>
+    {% endblock %}
+    {% block allcontent %}
+    
 
     <!----services we offer-->
     <section class="course">
@@ -72,6 +39,7 @@
             </div>
 
         </div>
+
     </section>
 
 <!---------campus-->
@@ -117,5 +85,5 @@
             navLinks.style.display = "none"
         }
     </script>
-</body>
-</html>
+
+{% endblock %}

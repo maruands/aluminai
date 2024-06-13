@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/prof.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block allcontent %}
   <div class="profile-container">
     <!-- <img src="roro.jpeg" alt="Profile Picture" class="profile-picture"> -->
     <img src="{{url_for('static', filename='images/roro.jpeg')}}" class="profile-picture">
     <div class="info">
-      <h1>{{user[1]}}</h1>
-      <h3>{{profile[1]}}</h3>
-      <p>{{profile[4]}}</p>
+      <h1>{{user[0]}} {{user[1]}}</h1>
+      <h3>{{user[3]}}</h3>
+      <p>{{user[6]}}</p>
       <ul class="contact">
-        <li><a href="mailto:johndoe@example.com">{{user[3]}}</a></li>
-        <li><a href="https://www.facebook.com/johndoe">{{profile[5]}}</a></li>
+        <li><a href="mailto:johndoe@example.com">{{user[4]}}</a></li>
+        <li><a href="https://www.facebook.com/johndoe">{{user[5]}}</a></li>
       </ul>
       <a href="{{ url_for('edit_profile', id=user[0]) }}" class="edit-button">Edit Profile</a>
     </div>
   </div>
-</body>
-</html>
+{% endblock %}

@@ -2,9 +2,6 @@ body {
     background-color: D3D9D4;
 }
 
-
-
-
 .homePage{
     background-color:pink;
 
@@ -27,6 +24,24 @@ body {
     text-decoration-color: aqua;
 }
 */
+/* Drop down contents */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    /* padding: 12px 10px; */
+    z-index: 1;
+    right: 0;
+    top: 55px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: white;
+}
 
 .profile i{
     position: absolute;
@@ -53,7 +68,7 @@ body {
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: url('/static/images/School.jpg');
+    background-image: url('/static/images/library.jpg');
     background-image: linear-gradient(rgba(4,9,30,0,7),rgba(4, 9, 30, 0.352))url('/static/vintage.jpeg');
     background-position: center;
     background-size: cover;
@@ -288,4 +303,34 @@ h3{
     transform: translate(-50%);
     position: absolute;
 
+}
+
+/* profiles */
+.profile-container {
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: .9;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.info {
+    text-align: center;
+    text-decoration: solid;
+}
+
+.contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
