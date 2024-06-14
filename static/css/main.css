@@ -1,5 +1,5 @@
 body {
-    background-color: D3D9D4;
+    background-color: 748D92;
 }
 
 .homePage{
@@ -227,14 +227,14 @@ p{
 .course-col{
     flex-basis: 31%;
     /* background: 212A31; */
-    background: #c9f7f1;
+    background: rgba(93, 213, 217, 0.476);
 
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
     box-sizing: border-box;
     transition: 0.5s;
-
+    /* opacity: .7; */
 }
 h3{
     text-align: center;

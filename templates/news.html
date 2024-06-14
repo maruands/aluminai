@@ -1,29 +1,31 @@
 {% extends "layout.html" %}
 
+
 {% block allcontent %}
-    <!--    -----------------   -->
-<div class="container">
-    <h1>News & Events</h1>
-    <section class="news-container">
-        <article class="news-item">
-            <img src="{{url_for('static', filename='images/library.jpg')}}" class="news-image">
-            <h3>News Headline 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio dui. Maecenas eu augue eget magna
-                gravida dignissim.</p>
-        </article>
-        <article class="news-item">
-            <!--<img src="static/images/library.jpg" alt="News Image 2" class="news-image"> -->
-            <img src="{{url_for('static', filename='images/rugby.jpeg')}}" class="news-image">
-            <h3>News Headline 2</h3>
-            <p>Donec nec odio dui. Maecenas eu augue eget magna gravida dignissim. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.</p>
-        </article>
-        <article class="news-item">
-            <img src="{{url_for('static', filename='images/mentor.jpg')}}" class="news-image">
-            <h3>Event Announcement</h3>
-            <p>Join us for an exciting event! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio
-                dui.</p>
-        </article>
+
+  <h1>News & Events</h1>
+  <section class="news-container">
+    <article class="news-item">
+      <img src="{{url_for('static', filename='images/library.jpg')}}" class="news-image">
+      <h3>New Library</h3>
+      <p>We're thrilled to announce the opening of the state-of-the-art.This stunning new facility boasts ;floor-to-ceiling windows offering inspiring views, collaborative learning spaces, a dedicated digital media center, providing students with a vibrant and dynamic environment to learn, explore, and connect. </p>
+    </article>
+    <article class="news-item">
+      <!--<img src="static/images/library.jpg" alt="News Image 2" class="news-image"> -->
+      <img src="{{url_for('static', filename='images/stude.jpg')}}" class="news-image">
+      <h3>Where Theory met Practice</h3>
+      <p>Bunsen burners flickering,
+        microscopes revealing hidden worlds. Here,
+        under the guidance of passionate instructors, we weren't just learning concepts; we were putting them to the test, collaborating with classmates, and experiencing the joy of scientific exploration</p>
+    </article>
+    <article class="news-item">
+      <img src="{{url_for('static', filename='images/mentor.jpg')}}" class="news-image">
+      <h3>Mentorship Sessions</h3>
+      <p>Our recent Career Day event was a resounding success,
+        bringing together current students and accomplished alumni for a day of valuable interaction. The atmosphere buzzed with excitement as students engaged with alumni from diverse fields. Alumni generously shared their career journeys, offering insights and advice that left a lasting impression on the students</p>
+    </article>
     </section>
-</div>
+</body>
+</html>
+
 {% endblock %}
