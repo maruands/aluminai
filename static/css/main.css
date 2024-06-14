@@ -4,35 +4,23 @@ body {
 
 .homePage{
     background-color:pink;
-
 }
-/* .Nav{
-    display: inline;
-    
+ .nav{
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    /* box-shadow: 0 0 0px ; */
+    background-color: D3D9D4;
+    width: 100%;
 }
-.Nav li{
-    display: inline;
-    border: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 5px;
-    border-radius: 4px;
-    width: 200px;
+.container{
+    margin-top: 50px;
 }
-.Nav li:hover{
-    text-decoration: underline;
-    text-decoration-color: aqua;
-}
-*/
-/* Drop down contents */
-
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-    /* padding: 12px 10px; */
     z-index: 1;
     right: 0;
     top: 55px;
@@ -56,8 +44,6 @@ body {
     margin-right: 20px;
     padding: 5px;
     width: 100px;
-   
-    
 }
 .login:hover{
     text-decoration:underline;
@@ -66,13 +52,14 @@ body {
 /*landing page starting*/
 
 .header{
-    min-height: 100vh;
+    min-height: 70vh;
     width: 100%;
     background-image: url('/static/images/library.jpg');
     background-image: linear-gradient(rgba(4,9,30,0,7),rgba(4, 9, 30, 0.352))url('/static/vintage.jpeg');
     background-position: center;
     background-size: cover;
     position: relative;
+    margin-top: 20px;
 }
 nav{
     display: flex;
@@ -87,7 +74,6 @@ nav{
         margin: 0;
         padding: 0;
         overflow: hidden;
-        /* background-color: #333; */
     }
     
     li {
