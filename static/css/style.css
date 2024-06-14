@@ -45,16 +45,17 @@ li a:hover {
     transform: translate(-50%, -50%);
 }
  /* Bordered form */
- form {
+ /* form {
      border: 3px solid #f1f1f1;
-     width: 500px;
- }
+     width: 200px;
+ } */
 
 
  /* Full-width inputs */
  input[type=text],
  input[type=email],
- input[type=password] {
+ input[type=password],
+ input[type=number] {
      width: 100%;
      padding: 12px 20px;
      margin: 8px 0;
@@ -121,16 +122,26 @@ li a:hover {
      }
  }
 
- #customers {
-     font-family: Arial, Helvetica, sans-serif;
-     border-collapse: collapse;
-     width: 100%;
+ .alumni_table_container{
+    height: 450px;
+    /* border: 1px solid white; */
+    overflow: auto;
  }
-
+ .alumni_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: -2px 10px 20px 5px rgb(26, 25, 25);
+ }
+ thead{
+    box-shadow: -2px 10px 20px 5px rgb(72, 148, 65);
+}
  #customers td,
  #customers th {
      border: 1px solid #ddd;
      padding: 8px;
+    
  }
 
  #customers tr:nth-child(even) {
@@ -164,12 +175,29 @@ li a:hover {
  }
 
  /*------------------*/
+ 
+ .search_box{
+    width: 300px;
+    height: 50px;
+    /* border: 1px solid white; */
+ }
  .search_box input{
-    width: 100%;
+    width: 140px;
     border: 2px solid 748D92;
-    border-radius: 10px;
+    border-radius: 5px;
     outline: none;
-    padding: 10 10px;
+    padding: 5px 10px;
+    
+}
+
+.search_button{
+    width: 80px;
+    padding: 5px 20px;
+    border-radius: 3px;
+}
+
+.search_box_form{
+    flex-direction: row;
 }
 h1 {
     margin-bottom: 1rem;

@@ -1,36 +1,39 @@
 {% extends "layout.html" %}
 
+{%block title %}Alumni {% endblock %}
+
 {% block allcontent %}
 <div class="container">
     <h1>Registered Users</h1>
 
     <div class="search_box">
-        <form method="post" action="{{ url_for('search_user') }}">
+        <form method="post" class="search_box_form" action="{{ url_for('search_user') }}">
             <label for="">Search</label>
             <input type="text" name="name" id="name" >
-            <button type="submit">Search</button>
+            <button class="search_button" type="submit">Search</button>
         </form>
     </div>
-    
-    <table id="customers">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Surname</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td>{{ user[0] }}</td>
-                <td>{{ user[1] }}</td>
-                <td>{{ user[2] }}</td>
-                <td><a href="{{ url_for('prof', email=user[3]) }}" class="view_profile">view profile</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="alumni_table_container">
+        <table id="customers" class="alumni_table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Surname</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>
+                    <td><a href="{{ url_for('prof', email=user[3]) }}" class="view_profile">view profile</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
